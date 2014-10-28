@@ -1,0 +1,31 @@
+#status {
+	background-color: #FFCCCC;
+	padding: 1px 20px;
+}
+
+.tableStatus {
+	display: none;
+}
+
+table {
+	width: 600px;
+	border-collapse: collapse;
+}
+
+table tr td {
+	font-size: 80%;
+	border: 1px solid black;
+	padding: 5px;
+}
+
+.tableHeader {
+	font-weight: bold;
+}
+
+.checkedHeader {
+	width: 16px;
+}
+
+.dateHeader {
+	width: 60px;
+}

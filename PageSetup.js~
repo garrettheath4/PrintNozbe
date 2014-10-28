@@ -1,0 +1,45 @@
+var gh4key = "0607809606158f55d1b66e9e1310f24d";
+var c3eProjId = "beb01da109";
+
+function submitPrintForm() {
+	var loginKey = $("#loginKey").value;
+	var projectId = $("#projectId").value;
+	popupInitMessage = {
+		purpose: "getNozbeData"
+	};
+	chrome.runtime.sendMessage(popupInitMessage, function(response) {
+		console.log("Successfully sent getNozbeData message from PageSetup popup");
+	});
+	saveFormPrefs();
+	return false;
+}
+
+function loadPrefs() {
+	chrome.storage.sync.get(['loginKey', 'lastProjectId'], prefillPrintForm);
+}
+
+function prefillPrintForm(prefData) {
+	if (prefData.loginKey) {
+		$("#loginKey").value = prefData.loginKey;
+	}
+	if (prefData.lastProjectId) {
+		$("#projectId").value = prefData.lastProjectId;
+	}
+}
+
+function saveLoginKeyPref(loginKeyStr) {
+	chrome.storage.sync.set({'loginKey': loginKeyStr});
+}
+
+function saveLastProjectIdPref(projIdStr) {
+	chrome.storage.sync.set({'lastProjectId': projIdStr});
+}
+
+function saveFormPrefs() {
+	if ($("#loginKey").value)
+	   saveLoginKeyPref($("#loginKey").value);
+	}
+	if ($("#projectId").value)
+   		saveLastProjectIdPref($("#projectId").value);
+	}
+}
